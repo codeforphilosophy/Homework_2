@@ -7,5 +7,21 @@ $(function(){
         new Course("Estonian language Level A2", "2", "65"),           
     ];
     
-    console.log(user);
+    $(".controls #profile-button").on("click", function(event){
+        if(!$(this).hasClass("active")){
+            $(this).addClass("active").siblings().removeClass("active");
+            $(".content #profile-container").addClass("active").siblings().removeClass("active");
+       };
+    });
+
+
+    $(".controls #courses-button").on("click", function(event){
+        if(!$(this).hasClass("active")){
+            $(this).addClass("active").siblings().removeClass("active");
+            $(".content #courses-container").addClass("active").siblings().removeClass("active");
+       };
+    });
+
+
+
 });
