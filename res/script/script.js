@@ -26,35 +26,53 @@ $(function(){
     $("#add-course-button").on("click", function(event){
         $("#add-course").toggle();
     });
-
-    function init(){
-        let tBody= $("#courses tbody");
-        for (let i=0; i<courses.length; i++){
-            let tdRowNumber= $("<td></td>").text(i+1);
-            let tdTitle=$("<td></td>").text(courses[i].title);
-            let tdSemester =$("<td></td>").text(courses[i].semester);
-            let tdGrade =$("<td></td>").text(courses[i].grade);
+    
+    $("#add-course #save-course").on("click", function(){
+        let addedCourse = new Course(
+            $('#title').val(), 
+            $('#semester').val(),
+            $('#grade').val()
+            );
+            
+            courses.push(addedCourse);
+            
+            createCourseRow(addedCourse, courses.length);
+            
+        })
+        
+        function createCourseRow(course_temp, rowNumber){
+            let tdRowNumber= $("<td></td>").text(rowNumber);
+            let tdTitle=$("<td></td>").text(course_temp.title);
+            let tdSemester =$("<td></td>").text(course_temp.semester);
+            let tdGrade =$("<td></td>").text(course_temp.grade);
             let tableRow = $("<tr></tr>");
             tableRow.append(tdRowNumber);
             tableRow.append(tdTitle);
             tableRow.append(tdSemester);
             tableRow.append(tdGrade);
+            let tBody= $("#courses tbody");
             tBody.append(tableRow);
-        };
-
-        let firstname = $("<li></li>").text(user.firstname);
-        let lastname = $("<li></li>").text(user.lastname);
-        let birthdate = $("<li></li>").text(user.birthdate); 
-        let faculty = $("<li></li>").text(user.faculty);
-
-        $("#gpa strong").text(user.gpa);
+        }
         
-        let ul = $(".info ul");
-        ul.append(firstname);
-        ul.append(lastname);
-        ul.append(birthdate);
-        ul.append(faculty);
-    }
-    
-    
-});
+        function init(){
+            let tBody= $("#courses tbody");
+            for (let i=0; i<courses.length; i++){
+                createCourseRow(courses[i], i+1)
+            };
+            
+            let firstname = $("<li></li>").text(user.firstname);
+            let lastname = $("<li></li>").text(user.lastname);
+            let birthdate = $("<li></li>").text(user.birthdate); 
+            let faculty = $("<li></li>").text(user.faculty);
+            
+            $("#gpa strong").text(user.gpa);
+            
+            let ul = $(".info ul");
+            ul.append(firstname);
+            ul.append(lastname);
+            ul.append(birthdate);
+            ul.append(faculty);
+        }
+        
+        
+    });
