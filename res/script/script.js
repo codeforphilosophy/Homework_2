@@ -23,12 +23,6 @@ $(function(){
         };
     });
     
-    // <tr>
-    //                         <td>1</td>
-    //                         <td>Agile software development</td>
-    //                         <td>1</td>
-    //                         <td>82</td>
-    
     function init(){
         let tBody= $("#courses tbody");
         for (let i=0; i<courses.length; i++){
@@ -42,8 +36,20 @@ $(function(){
             tableRow.append(tdSemester);
             tableRow.append(tdGrade);
             tBody.append(tableRow);
-            
-        }
+        };
+
+        let firstname = $("<li></li>").text(user.firstname);
+        let lastname = $("<li></li>").text(user.lastname);
+        let birthdate = $("<li></li>").text(user.birthdate); 
+        let faculty = $("<li></li>").text(user.faculty);
+
+        $("#gpa strong").text(user.gpa);
+        
+        let ul = $(".info ul");
+        ul.append(firstname);
+        ul.append(lastname);
+        ul.append(birthdate);
+        ul.append(faculty);
     }
     
     
