@@ -38,7 +38,19 @@ $(function(){
             
             createCourseRow(addedCourse, courses.length);
             
-        })
+            $('#title').val(""); 
+            $('#semester').val("");
+            $('#grade').val("");
+            $("#add-course").toggle();
+        });
+
+    $("#add-course #cancel-course").on("click", function(){
+        $('#title').val(""); 
+        $('#semester').val("");
+        $('#grade').val("");
+        $("#add-course").toggle();
+    })
+      
         
         function createCourseRow(course_temp, rowNumber){
             let tdRowNumber= $("<td></td>").text(rowNumber);
