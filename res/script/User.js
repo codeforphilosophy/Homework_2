@@ -1,8 +1,3 @@
-firstname
-// lastname
-// birthdate
-// faculty
-// gpa
 
 class User{
     constructor(firstname, lastname, birthdate, faculty, gpa){
