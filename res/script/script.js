@@ -23,6 +23,10 @@ $(function(){
         };
     });
     
+    $("#add-course-button").on("click", function(event){
+        $("#add-course").toggle();
+    });
+
     function init(){
         let tBody= $("#courses tbody");
         for (let i=0; i<courses.length; i++){
